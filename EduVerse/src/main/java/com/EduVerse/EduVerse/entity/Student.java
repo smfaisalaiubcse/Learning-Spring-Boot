@@ -11,6 +11,23 @@ import java.time.LocalDate;
 public class Student extends Person {
 
     private String id;
+
+    public StudentLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(StudentLevel level) {
+        this.level = level;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private StudentLevel level;
 
     public Student(String firstName, String lastName, String fatherName, String motherName,
