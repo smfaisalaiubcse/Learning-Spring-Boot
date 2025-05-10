@@ -10,3 +10,13 @@ services:
                         - "8080:8080"
                 volumes:
                         - ./:/app
+        mysql:
+                container_name: 'Eduverse-MySQL'
+                image: 'mysql:latest'
+                environment:
+                        - 'MYSQL_DATABASE=Eduverse'
+                        - 'MYSQL_PASSWORD=secret'
+                        - 'MYSQL_ROOT_PASSWORD=verysecret'
+                        - 'MYSQL_USER=myuser'
+                ports:
+                        - '3309:3306'
