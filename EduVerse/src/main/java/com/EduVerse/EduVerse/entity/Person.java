@@ -1,7 +1,10 @@
 package com.EduVerse.EduVerse.entity;
 
+import jakarta.persistence.MappedSuperclass;
+
 import java.time.LocalDate;
 
+@MappedSuperclass  // ✅ This is the key!
 public abstract class Person {
 
     private String firstName;
@@ -19,6 +22,10 @@ public abstract class Person {
     private String bloodGroup;
 
     private LocalDate dateOfBirth;
+
+    // ✅ Default constructor for JPA/Lombok
+    public Person() {
+    }
 
     public Person(String firstName, String lastName, String fatherName, String motherName, String phoneNumber, String address, String bloodGroup, LocalDate dateOfBirth) {
         this.firstName = firstName;

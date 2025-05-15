@@ -29,7 +29,20 @@ public class StudentController {
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
+    @GetMapping("/{id}")
+    public Student getStudent(@PathVariable String id) {
+        return studentService.getStudentById(id);
+    }
 
+    @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable String id, @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable String id) {
+        studentService.deleteStudent(id);
+    }
     // ✔️ Simple test endpoint (optional)
     @GetMapping("/test")
     public String test() {

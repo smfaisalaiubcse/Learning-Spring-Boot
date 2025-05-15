@@ -10,6 +10,8 @@ services:
                         - "8080:8080"
                 volumes:
                         - ./:/app
+                depends_on:
+                        - mysql
         mysql:
                 container_name: 'Eduverse-MySQL'
                 image: 'mysql:latest'

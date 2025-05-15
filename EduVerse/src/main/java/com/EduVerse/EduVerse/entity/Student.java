@@ -1,33 +1,23 @@
 package com.EduVerse.EduVerse.entity;
 
 import com.EduVerse.EduVerse.enums.StudentLevel;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Setter
 @Getter
+@Setter
+@NoArgsConstructor
+@Entity
 public class Student extends Person {
 
-    private String id;
+    @Id
+    private String id; // UUID generated manually
 
-    public StudentLevel getLevel() {
-        return level;
-    }
-
-    public void setLevel(StudentLevel level) {
-        this.level = level;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    @Enumerated(EnumType.STRING)
     private StudentLevel level;
 
     public Student(String firstName, String lastName, String fatherName, String motherName,
@@ -37,5 +27,4 @@ public class Student extends Person {
         this.id = id;
         this.level = level;
     }
-
 }
