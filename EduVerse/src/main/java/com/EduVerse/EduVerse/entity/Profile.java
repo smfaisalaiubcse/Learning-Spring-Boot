@@ -1,14 +1,19 @@
-package com.EduVerse.EduVerse.dto;
-import com.EduVerse.EduVerse.enums.StudentLevel;
-import lombok.*;
+package com.EduVerse.EduVerse.entity;
 
+import jakarta.persistence.*;
+import lombok.*;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class StudentDTO {
+@MappedSuperclass
+public abstract class Profile {
+
+    @Id
+    private String id;
+
     private String firstName;
     private String lastName;
     private String fatherName;
@@ -17,5 +22,4 @@ public class StudentDTO {
     private String address;
     private String bloodGroup;
     private LocalDate dateOfBirth;
-    private StudentLevel level;
 }

@@ -2,6 +2,7 @@ package com.EduVerse.EduVerse.controller;
 
 import com.EduVerse.EduVerse.entity.Student;
 import com.EduVerse.EduVerse.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +19,8 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    // ✔️ Add a new student
     @PostMapping
-    public Student addStudent(@RequestBody Student student) {
+    public Student addStudent(@Valid @RequestBody Student student) {
         return studentService.addStudent(student);
     }
 
