@@ -8,7 +8,8 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)  // ✅ keep this
 public abstract class Profile {
 
     @Id

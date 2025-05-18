@@ -1,6 +1,7 @@
 package com.EduVerse.EduVerse.controller;
 
-import com.EduVerse.EduVerse.entity.Student;
+import com.EduVerse.EduVerse.dto.request.StudentRequest;
+import com.EduVerse.EduVerse.dto.response.StudentResponse;
 import com.EduVerse.EduVerse.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,40 +13,16 @@ import java.util.List;
 @RequestMapping("/api/students")
 public class StudentController {
 
-    private final StudentService studentService;
-
     @Autowired
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
+    private StudentService studentService;
 
     @PostMapping
-    public Student addStudent(@Valid @RequestBody Student student) {
-        return studentService.addStudent(student);
+    public StudentResponse addStudent(@Valid @RequestBody StudentRequest request) {
+        return studentService.addStudent(request);
     }
 
-    // ✔️ View all students
     @GetMapping
-    public List<Student> getAllStudents() {
+    public List<StudentResponse> getAllStudents() {
         return studentService.getAllStudents();
-    }
-    @GetMapping("/{id}")
-    public Student getStudent(@PathVariable String id) {
-        return studentService.getStudentById(id);
-    }
-
-    @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable String id, @RequestBody Student student) {
-        return studentService.updateStudent(id, student);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable String id) {
-        studentService.deleteStudent(id);
-    }
-    // ✔️ Simple test endpoint (optional)
-    @GetMapping("/test")
-    public String test() {
-        return "<h1>Hello from StudentController!</h1>";
     }
 }
