@@ -1,6 +1,7 @@
 package com.EduVerse.EduVerse.dto.request;
 
 import com.EduVerse.EduVerse.enums.StudentLevel;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -16,7 +17,8 @@ public class StudentRequest {
     @NotBlank private String lastName;
     @NotBlank private String fatherName;
     @NotBlank private String motherName;
-    @NotBlank private String phoneNumber;
+    @Column(unique = true, nullable = false)
+    private String phoneNumber;
     @NotBlank private String address;
     @NotBlank private String bloodGroup;
     @Past @NotNull private LocalDate dateOfBirth;

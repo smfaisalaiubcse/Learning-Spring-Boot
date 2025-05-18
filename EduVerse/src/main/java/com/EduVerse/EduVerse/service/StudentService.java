@@ -17,6 +17,10 @@ public class StudentService {
     private StudentRepository studentRepository;
 
     public StudentResponse addStudent(StudentRequest request) {
+        if (studentRepository.existsByPhoneNumber(request.getPhoneNumber())) {
+            throw new IllegalArgumentException("Phone number already in use");
+        }
+
         Student student = StudentMapper.toEntity(request);
         student = studentRepository.save(student);
         return StudentMapper.toResponse(student);
@@ -28,4 +32,6 @@ public class StudentService {
                 .map(StudentMapper::toResponse)
                 .toList();
     }
+
+
 }
