@@ -13,4 +13,12 @@ public class Student extends Profile {
 
     @Enumerated(EnumType.STRING)
     private StudentLevel level;
+
+    public StudentLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(StudentLevel level) {
+        this.level = level;
+    }
 }
