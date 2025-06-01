@@ -36,20 +36,22 @@ public class UmsApplication {
         return http.build();
     }
 
-    /*@Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-        UserDetails user = User.builder().username("user").password(passwordEncoder().encode("123456")).roles("USER").build();
-        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("123456")).roles("ADMIN").build();
-        return new InMemoryUserDetailsManager(user, admin);
-    }*/
+//    @Bean
+//    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+//        UserDetails user = User.builder().username("user").password(passwordEncoder().encode("123456")).roles("USER").build();
+//        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("123456")).roles("ADMIN").build();
+//        return new InMemoryUserDetailsManager(user, admin);
+//    }
 
-    /*@Bean
+    @Bean
     public JdbcUserDetailsManager userDetailsService(DataSource dataSource) {
         return new JdbcUserDetailsManager(dataSource);
-    }*/
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("123456"));
         return new BCryptPasswordEncoder();
     }
 
